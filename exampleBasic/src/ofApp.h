@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxLog4Cpp.h"
+#include "ofxLog4CppChannel.h"
 
 class ofApp : public ofBaseApp{
 

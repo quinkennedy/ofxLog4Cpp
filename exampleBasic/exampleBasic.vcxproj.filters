@@ -1,66 +1,72 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup>
-		<ClCompile Include="src\ofApp.cpp">
-			<Filter>src</Filter>
-		</ClCompile>
-		<ClCompile Include="src\main.cpp">
-			<Filter>src</Filter>
-		</ClCompile>
-		<ClCompile Include="..\..\..\addons\ofxLog4Cpp\src\ofxLog4Cpp.cpp">
-			<Filter>addons\ofxLog4Cpp\src</Filter>
-		</ClCompile>
-	</ItemGroup>
-	<ItemGroup>
-		<Filter Include="src">
-			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons">
-			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp">
-			<UniqueIdentifier>{CB4F948E-90CB-777D-4576-131F}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp\src">
-			<UniqueIdentifier>{89040A2C-98B5-015D-4E49-0258}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp\libs">
-			<UniqueIdentifier>{DA31F14A-D8F6-562F-71E8-FF57}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp\libs\log4cpp">
-			<UniqueIdentifier>{F27E2815-372C-135E-C07A-B1CE}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp\libs\log4cpp\include">
-			<UniqueIdentifier>{1A9DD127-C894-794D-752E-3688}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp">
-			<UniqueIdentifier>{435D9913-B64F-5010-641B-667E}</UniqueIdentifier>
-		</Filter>
-	</ItemGroup>
-	<ItemGroup>
-		<ClInclude Include="src\ofApp.h">
-			<Filter>src</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\src\ofxLog4Cpp.h">
-			<Filter>addons\ofxLog4Cpp\src</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-MinGW32.h">
-			<Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-openvms.h">
-			<Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-win32-stlport-boost.h">
-			<Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-win32.h">
-			<Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\convenience.h">
-			<Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
-		</ClInclude>
-	</ItemGroup>
-	<ItemGroup>
-		<ResourceCompile Include="icon.rc" />
-	</ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLog4Cpp\src\ofxLog4Cpp.cpp">
+      <Filter>addons\ofxLog4Cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxLog4CppChannel.cpp">
+      <Filter>addons\ofxLog4Cpp\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp">
+      <UniqueIdentifier>{CB4F948E-90CB-777D-4576-131F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp\src">
+      <UniqueIdentifier>{89040A2C-98B5-015D-4E49-0258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp\libs">
+      <UniqueIdentifier>{DA31F14A-D8F6-562F-71E8-FF57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp\libs\log4cpp">
+      <UniqueIdentifier>{F27E2815-372C-135E-C07A-B1CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp\libs\log4cpp\include">
+      <UniqueIdentifier>{1A9DD127-C894-794D-752E-3688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp">
+      <UniqueIdentifier>{435D9913-B64F-5010-641B-667E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\src\ofxLog4Cpp.h">
+      <Filter>addons\ofxLog4Cpp\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-MinGW32.h">
+      <Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-openvms.h">
+      <Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-win32-stlport-boost.h">
+      <Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\config-win32.h">
+      <Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp\convenience.h">
+      <Filter>addons\ofxLog4Cpp\libs\log4cpp\include\log4cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxLog4CppChannel.h">
+      <Filter>addons\ofxLog4Cpp\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
 </Project>
