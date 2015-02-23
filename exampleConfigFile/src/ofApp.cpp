@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	logger.init();
 	logger.debug() << "debug log";
 	logger.info() << "info log";
 	logger.warn() << "warn log";
@@ -11,7 +12,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	logger["ofApp.update"].debugStream() << "lets see how much data we can create: " << ofGetElapsedTimeMillis();
+	logger.debug("ofApp.update") << "lets see how much data we can create: " << ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------

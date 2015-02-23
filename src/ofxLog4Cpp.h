@@ -14,9 +14,6 @@
 #include "ofMain.h"
 
 class ofxLog4Cpp {
-private:
-	vector<string> appenderNames;
-	log4cpp::Category* root;
 public:
 	static log4cpp::Layout* getDefaultLayout(){
 		log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
@@ -54,126 +51,125 @@ public:
 		return appender;
 	}
 
-	ofxLog4Cpp(){
-		root = &log4cpp::Category::getRoot();
+	static log4cpp::Category& getPath(string path = ""){
+		return log4cpp::Category::getInstance(path);
+	}
 
-		//setup logger
-		string propFileName = "log4cpp.properties";
-		if (ofFile::doesFileExist(propFileName)){
-			log4cpp::PropertyConfigurator::configure(ofFile(propFileName).getAbsolutePath());
-		} else {
-			setLogPriority(log4cpp::Priority::INFO);
-			enableConsoleLog();
-		}
-	};
-
-	void useLayout(string appenderName, log4cpp::Layout* layout){
+	static void useLayout(string appenderName, log4cpp::Layout* layout){
 		log4cpp::Appender* appender = log4cpp::Appender::getAppender(appenderName);
 		if (appender != NULL){
 			appender->setLayout(layout);
 		}
 	}
 
-	void useLayout(log4cpp::Layout* layout){
-		for(auto appenderName : appenderNames){
-			useLayout(appenderName, layout);
-		}
+	static void useLayout(log4cpp::Layout* layout){
+		useLayout("console", layout);
+		useLayout("file", layout);
 	}
 
-	void useBasicLayout(){
+	static void useBasicLayout(){
 		useLayout(new log4cpp::BasicLayout());
 	}
 
-	void useDefaultLayout(){
+	static void useDefaultLayout(){
 		useLayout(getDefaultLayout());
 	}
 
-	void useRawLayout(){
+	static void useRawLayout(){
 		useLayout(getRawLayout());
 	}
 
-	void useJsonLayout(){
+	static void useJsonLayout(){
 		useLayout(getJsonLayout());
 	}
 
-	void enableAppender(log4cpp::Appender* appender){
-		for(int i = 0; i < appenderNames.size(); i++){
-			if (appenderNames[i] == appender->getName()){
-				//appender already in use
-				return;
-			}
-		}
-		root->addAppender(appender);
-		appenderNames.push_back(appender->getName());
+	static void enableAppender(log4cpp::Appender* appender){
+		getPath().addAppender(appender);
 	}
 
-	void enableFileLog(){
+	static void enableFileLog(){
 		enableAppender(getFileAppender());
 	}
 
-	void enableConsoleLog(){
+	static void enableConsoleLog(){
 		enableAppender(getConsoleAppender());
 	}
 
-	void disableAppender(string name){
-		for(int i = 0; i < appenderNames.size(); i++){
-			if (appenderNames[i] == name){
-				root->removeAppender(log4cpp::Appender::getAppender(name));
-				appenderNames.erase(appenderNames.begin() + i);
-				return;
-			}
+	static void disableAppender(string name){
+		log4cpp::Appender* appender = log4cpp::Appender::getAppender(name);
+		if (appender != NULL){
+			getPath().removeAppender(appender);
 		}
 	}
 
-	void disableConsoleLog(){
+	static void disableConsoleLog(){
 		disableAppender("console");
 	}
 
-	void disableFileLog(){
+	static void disableFileLog(){
 		disableAppender("file");
 	}
 
-	void setLogPriority(log4cpp::Priority::Value priority){
-		root->setPriority(priority);
+	static void setLogPriority(log4cpp::Priority::Value priority){
+		getPath().setPriority(priority);
 	}
 
-	log4cpp::Category& operator[](string path){
-		return log4cpp::Category::getInstance(path);
+	static void init(){
+		//setup logger
+		string propFileName = "log4cpp.properties";
+		if (ofFile::doesFileExist(propFileName)){
+			log4cpp::PropertyConfigurator::configure(ofFile(propFileName).getAbsolutePath());
+		} else {
+			ofxLog4Cpp::setLogPriority(log4cpp::Priority::INFO);
+			ofxLog4Cpp::enableConsoleLog();
+		}
 	}
 
-	void log(log4cpp::Priority::Value priority, string message){
-		root->log(priority, message);
+	static void log(string path, log4cpp::Priority::Value priority, string message){
+		getPath(path).log(priority, message);
 	}
 
-	void debug(string message){
-		root->debug(message);
+	static void log(log4cpp::Priority::Value priority, string message){
+		log("", priority, message);
 	}
 
-	void info(string message){
-		root->info(message);
+	static log4cpp::CategoryStream log(string path, log4cpp::Priority::Value priority){
+		return getPath(path).getStream(priority);
 	}
 
-	void warn(string message){
-		root->warn(message);
+	static log4cpp::CategoryStream log(log4cpp::Priority::Value priority){
+		return log("", priority);
 	}
 
-	void error(string message){
-		root->error(message);
+	static void debug(string path, string message){
+		log(path, log4cpp::Priority::DEBUG, message);
+	}
+	
+	static log4cpp::CategoryStream debug(string path = ""){
+		return getPath(path).getStream(log4cpp::Priority::DEBUG);
 	}
 
-	log4cpp::CategoryStream debug(){
-		return root->getStream(log4cpp::Priority::DEBUG);
+	static void info(string path, string message){
+		log(path, log4cpp::Priority::INFO, message);
+	}
+	
+	static log4cpp::CategoryStream info(string path = ""){
+		return getPath(path).getStream(log4cpp::Priority::INFO);
 	}
 
-	log4cpp::CategoryStream info(){
-		return root->getStream(log4cpp::Priority::INFO);
+	static void warn(string path, string message){
+		log(path, log4cpp::Priority::WARN, message);
+	}
+	
+	static log4cpp::CategoryStream warn(string path = ""){
+		return getPath(path).getStream(log4cpp::Priority::WARN);
 	}
 
-	log4cpp::CategoryStream warn(){
-		return root->getStream(log4cpp::Priority::WARN);
+	static void error(string path, string message){
+		log(path, log4cpp::Priority::ERROR, message);
 	}
-
-	log4cpp::CategoryStream error(){
-		return root->getStream(log4cpp::Priority::ERROR);
+	
+	static log4cpp::CategoryStream error(string path = ""){
+		return getPath(path).getStream(log4cpp::Priority::ERROR);
 	}
 };
