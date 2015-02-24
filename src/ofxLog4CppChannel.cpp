@@ -24,7 +24,7 @@ void ofxLog4CppChannel::close(){
 
 void ofxLog4CppChannel::log(ofLogLevel level, const string & module, const string & message){
 	if (!ofxLog4CppChannelNS::isShutdown){
-		root.log(of2l4c(level), message);
+		root.log(of2l4c(level), "[" + module + "] " + message);
 	}
 	//ofxLog4Cpp::log(module, of2l4c(level), message);
 }
