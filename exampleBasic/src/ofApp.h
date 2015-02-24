@@ -7,9 +7,13 @@
 class ofApp : public ofBaseApp{
 
 	public:
+		int hi;
+		int& hello;
+		ofApp():hi(10),hello(hi){};
 		void setup();
 		void update();
 		void draw();
+        void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);

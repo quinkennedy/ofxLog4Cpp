@@ -2,10 +2,18 @@
 
 #include "ofLog.h"
 #include "ofxLog4Cpp.h"
+#include "log4cpp/HierarchyMaintainer.hh"
 
 class ofxLog4CppChannel: public ofBaseLoggerChannel{
 public:
-	ofxLog4CppChannel();
+	enum LogFormat{
+		DEFAULT,
+		JSON,
+		NONE,
+		RAW,
+		BASIC
+	};
+	ofxLog4CppChannel(/*LogFormat forConsole = LogFormat::DEFAULT, LogFormat forFile = LogFormat::NONE*/);
 	virtual ~ofxLog4CppChannel();
 
 	void log(ofLogLevel level, const string & module, const string & message);
@@ -15,7 +23,7 @@ public:
 	void close();
 
 private:
-	ofFile file;
+	log4cpp::Category& root;
 	log4cpp::Priority::Value of2l4c(ofLogLevel level){
 		switch (level){
 		case ofLogLevel::OF_LOG_ERROR:

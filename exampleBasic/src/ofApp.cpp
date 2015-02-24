@@ -86,6 +86,8 @@ void ofApp::setup(){
 	ofLogNotice() << "And it is just as easy to disable file logging as well";
 	ofLogNotice() << "'init' is actually called by the ofxLog4CppChannel constructor";
 	ofLogNotice() << "So if you want to use the addon this way, no need to call 'init' yourself";
+	ofLogNotice() << "hi " << hi;
+	ofLogNotice() << "hello " << hello;
 }
 
 //--------------------------------------------------------------
@@ -96,6 +98,12 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+}
+
+void ofApp::exit(){
+	ofLogNotice() << "hi " << hi;
+	ofLogNotice() << "hello " << hello;
+	ofLogNotice() << "exiting!";
 }
 
 //--------------------------------------------------------------
