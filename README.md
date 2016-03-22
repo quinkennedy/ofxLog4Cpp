@@ -1,23 +1,50 @@
-ofxAddonTemplate
-================
+ofxLog4Cpp
+=====================================
 
-OpenFrameworks addon template for easier development of structurally correct addons.
+Currently libraries are only compiled for Visual Studio 2012 and Linux64
 
-This template aids you as an addon author in creating an addon in a "proper" way. Doing this enables the openFrameworks community to easily use your addon, and having addons adhere to an established structure makes it easier for the openFrameworks developers to create features around contributed addons, like the addons index at ofxaddons.com.
+Introduction
+------------
+Enable production-ready logging in oF apps, notably including configuration via file and rolling logs.
 
-Download
---------
-The template contains all you need to start developing your addon. Download the template using the Download button on the right side of the github page. Unzip, rename and copy it to your addons folder.
-**PLEASE DON'T FORK** the addon template repo if you plan on creating your own addon, this will lead to confusion on the Github inheritance/forking graph, and you will unnecessarily have this repository's history in your own git repo.
+License
+-------
+[MIT License](https://en.wikipedia.org/wiki/MIT_License). The underlying library (Lib4Cpp) is LGPL.
 
-Further Steps
--------------
-`readme_author.md` contains instructions and explanations for you.
-`readme_deploy.md` is filled with a template for an informative README file you might want to use with your addon.
+Installation
+------------
+Drop or clone the folder into the `openFrameworks/addons/` folder: `cd /path/to/oF/addons; git clone https://github.com/quinkennedy/ofxLog4Cpp.git;`
 
-Before announcing your addon to the world, you should remove this file (`readme.md`) and the author instructions, and rename `readme_deploy.md` to `README.md`.
-Also, if you have special instructions which people should see when submitting a pull request or open an issue in your addon repository, add a `CONTRIBUTING.md` file at the root of your repository. For more details, see https://github.com/blog/1184-contributing-guidelines
+Dependencies
+------------
+No dependency on other addons.
 
-This template reflects the help text found at http://ofxaddons.com/howto, and will be updated from time to time by the OF developers.
+Compatibility
+------------
 
-Thanks for listening, and happy coding!
+* openFrameworks 0.8.4 for Visual Studio 2012
+* openFrameworks 0.9.3 on Ubuntu 14.04
+
+Known issues
+------------
+
+Version history
+------------
+### Version 0.1 (Date):
+first!
+
+Building Log4Cpp lib
+------------
+This is built on top of Log4Cpp 1.1.1. This section roughly outlines what to do if you want to add static libraries for other platforms. Currently there are static libraries for Linux64 and Visual Studio 2012.
+
+The source for Log4Cpp is hosted on [sourceforge](https://sourceforge.net/projects/log4cpp/files/)
+
+Once downloaded and unzipped, on Ubuntu I did the following:
+
+```
+./configure --prefix=/PATH/TO/UNZIPPED/LIB4CPP/install_prefix
+./make
+./make install
+```
+
+That conveniently places the libs in a directory called install_prefix. You can grab the static lib from install_prefix/lib and drop it in the appropriate lib directory for this addon.
