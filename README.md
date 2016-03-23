@@ -23,7 +23,8 @@ Compatibility
 ------------
 
 * openFrameworks 0.8.4 for Visual Studio 2012
-* openFrameworks 0.9.3 on Ubuntu 14.04
+* openFrameworks 0.9.4 on Ubuntu 14.04
+* openFrameworks 0.9.4 on OS X
 
 Known issues
 ------------
@@ -39,12 +40,21 @@ This is built on top of Log4Cpp 1.1.1. This section roughly outlines what to do 
 
 The source for Log4Cpp is hosted on [sourceforge](https://sourceforge.net/projects/log4cpp/files/)
 
-Once downloaded and unzipped, on Ubuntu I did the following:
+Once downloaded and unzipped:
+* Ubuntu
 
-```
-./configure --prefix=/PATH/TO/UNZIPPED/LIB4CPP/install_prefix
-./make
-./make install
-```
+	```
+	$cd /PATH/TO/UNZIPPED/LIB4CPP/
+	$./configure --prefix=/PATH/TO/UNZIPPED/LIB4CPP/install_prefix
+	$./make
+	$./make install
+	```
+* OS X
+	```
+	$cd /PATH/TO/UNZIPPED/LIB4CPP/
+	$./configure CFLAGS="-arch i386 -arch x86_64" CXXFLAGS="-arch i386 -arch x86_64" LDFLAGS="-arch i386 -arch x86_64" --prefix=/Users/brettrenfer/Dropbox/Code/Native/log4cpp/install_prefix
+	$./make
+	$./make install
+	````
 
-That conveniently places the libs in a directory called install_prefix. You can grab the static lib from install_prefix/lib and drop it in the appropriate lib directory for this addon.
+* That conveniently places the libs in a directory called install_prefix. You can grab the static lib from install_prefix/lib and drop it in the appropriate lib directory for this addon.
