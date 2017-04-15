@@ -33,7 +33,7 @@ private:
 		case ofLogLevel::OF_LOG_SILENT:
 			return log4cpp::Priority::EMERG;
 		case ofLogLevel::OF_LOG_VERBOSE:
-			return log4cpp::Priority::NOTSET;
+			return log4cpp::Priority::DEBUG;
 		case ofLogLevel::OF_LOG_WARNING:
 			return log4cpp::Priority::WARN;
 		case ofLogLevel::OF_LOG_NOTICE:
