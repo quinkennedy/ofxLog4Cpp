@@ -1,11 +1,32 @@
 ofxLog4Cpp
 =====================================
 
-Currently libraries are only compiled for Visual Studio 2012 and Linux64
+Currently libraries are only compiled for Visual Studio 2012, Linux64, and OSX
 
 Introduction
 ------------
 Enable production-ready logging in oF apps, notably including configuration via file and rolling logs.
+
+Usage
+-----
+The logger needs to be initialized by calling `logger.init()` before use. If you have a file _log4cpp.properties_ in your _data/_ directory, then this will be used to configure Log4Cpp. There is an example properties file in _exampleConfigFile_. Keep in mind that the log levels specified in that file are Log4Cpp log levels, not oF log levels.
+
+In order to use the Log4Cpp functionality while still calling `ofLog____` methods, you need to set Log4Cpp as a channel: 
+```
+shared_ptr<ofxLog4CppChannel> log(new ofxLog4CppChannel());
+ofSetLoggerChannel(log);
+```
+If you intend to use ofxLog4Cpp this way, then you don't need to call `init()` explicitly, since `new ofxLog4CppChannel()` initializes the logger for you.
+
+This is the mapping from oF log levels to Log4Cpp log levels:
+```
+ ofLogLevel::OF_LOG_FATAL_ERROR  <->  log4cpp::Priority::FATAL
+ ofLogLevel::OF_LOG_ERROR        <->  log4cpp::Priority::ERROR
+ ofLogLevel::OF_LOG_WARNING      <->  log4cpp::Priority::WARN
+ ofLogLevel::OF_LOG_NOTICE       <->  log4cpp::Priority::INFO
+ ofLogLevel::OF_LOG_VERBOSE      <->  log4cpp::Priority::DEBUG
+ ofLogLevel::OF_LOG_SILENT       <->  log4cpp::Priority::EMERG
+```
 
 License
 -------
